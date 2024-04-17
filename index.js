@@ -44,11 +44,20 @@ const validateAge = (dob) => {
   const today = new Date();
   const minDate = new Date(today);
   const maxDate = new Date(today);
-  const date = new Date(dob);
   minDate.setFullYear(minDate.getFullYear() - 55);
   maxDate.setFullYear(maxDate.getFullYear() - 18);
+  const date = new Date(dob);
 
-  return date > maxDate || date < minDate;
+  const valid1 =
+    date.getFullYear() <= maxDate.getFullYear() &&
+    date.getMonth() <= maxDate.getMonth() &&
+    date.getDate() <= maxDate.getDate();
+  const valid2 =
+    date.getFullYear() >= minDate.getFullYear() &&
+    date.getMonth() >= minDate.getMonth() &&
+    date.getDate() >= minDate.getDate();
+
+  return valid1 && valid2;
 };
 
 const saveUserForm = (event) => {
@@ -59,7 +68,7 @@ const saveUserForm = (event) => {
   const dob = document.getElementById("dob").value;
   const acceptTerms = document.getElementById("acceptTerms").checked;
 
-  if (validateAge(dob)) {
+  if (!validateAge(dob)) {
     alert("Age between 18 and 55 only accepted!");
     location.reload();
     return;
