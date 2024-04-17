@@ -33,8 +33,8 @@ const displayEntries = () => {
     <th class="py-2 px-4">Name</th>
     <th class="py-2 px-4">Email</th>
     <th class="py-2 px-4">Password</th>
-    <th class="py-2 px-4">Date of Birth</th>
-    <th class="py-2 px-4">Accepted Terms</th>
+    <th class="py-2 px-4">Dob</th>
+    <th class="py-2 px-4">Accepted terms?</th>
   </tr>${tableEntries}</table>`;
 
   let tableContent = document.getElementById("user-entries");
@@ -46,12 +46,14 @@ const validateAge = (dob) => {
   const today = new Date();
   const date = new Date(dob);
   let age = today.getFullYear() - date.getFullYear();
-  const month = today.getMonth() < date.getMonth();
-  const day = today.getDate() < date.getDate();
-  if (month || (month && day)) {
+  const month = today.getMonth() - date.getMonth();
+  const day = today.getDate() - date.getDate();
+  if (month < 0 || (month === 0 && day < 0)) {
     age--;
   }
-  if (age >= 18 && age <= 55) return true;
+  if (age >= 18 && age <= 55) {
+    return true;
+  }
   return false;
 };
 
