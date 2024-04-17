@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Registration</title>
+    <style>
+      input:invalid:focus {
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body class="bg-stone-200">
+    <div class="shadow-2xl mx-72 mt-8 bg-neutral-50 rounded-md">
+      <h1 class="text-3xl py-3 font-bold mb-4 text-center">
+        Registration Form
+      </h1>
+      <div class="mx-16 my-2">
+        <form id="user-form">
+          <div class="flex px-4 py-4">
+            <label for="name" class="block w-1/2 text-xl">Name</label>
+            <input
+              required
+              type="text"
+              id="name"
+              name="name"
+              class="w-1/2 px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+            />
+          </div>
+
+          <div class="flex px-4 py-4">
+            <label for="name" class="block w-1/2 text-xl">Email</label>
+            <input
+              required
+              type="email"
+              id="email"
+              name="email"
+              class="w-1/2 px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+            />
+          </div>
+
+          <div class="flex px-4 py-4">
+            <label for="password" class="block w-1/2 text-xl">Password</label>
+            <input
+              required
+              type="password"
+              id="password"
+              name="password"
+              class="w-1/2 px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+            />
+          </div>
+
+          <div class="flex px-4 py-4">
+            <label for="dob" class="block w-1/2 text-xl">Date of Birth</label>
+            <input
+              required
+              type="date"
+              id="dob"
+              name="dob"
+              class="w-1/2 px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+            />
+          </div>
+
+          <div class="flex px-4 py-4">
+            <label for="acceptTerms" class="block w-1/2 text-xl"
+              >Accept Terms & Conditions</label
+            >
+            <input
+              type="checkbox"
+              id="acceptTerms"
+              name="acceptTerms"
+              class="w-4 px-3 py-2"
+            />
+          </div>
+
+          <div class="flex px-4 py-4">
+            <button
+              class="bg-green-500 text-white px-4 py-2 rounded-md"
+              type="submit"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="overflow-x-auto shadow-2xl mx-72 mt-8 bg-neutral-50 rounded-md">
+      <h1 class="text-3xl py-3 font-bold text-center">Form Entries</h1>
+      <div id="user-entries"></div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
