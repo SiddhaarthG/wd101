@@ -42,14 +42,13 @@ const displayEntries = () => {
 
 const validateAge = (dob) => {
   const today = new Date();
+  const minDate = new Date(today);
+  const maxDate = new Date(today);
   const date = new Date(dob);
-  let age = today.getFullYear() - date.getFullYear();
-  const month = today.getMonth() - date.getMonth();
-  const day = today.getDate() - date.getDate();
-  if (month < 0 || (month === 0 && day < 0)) {
-    age--;
-  }
-  return age < 18 || age > 55;
+  minDate.setFullYear(minDate.getFullYear() - 55);
+  maxDate.setFullYear(maxDate.getFullYear() - 18);
+
+  return date > maxDate || date < minDate;
 };
 
 const saveUserForm = (event) => {
