@@ -1,5 +1,4 @@
 const retrieveEntries = () => {
-  console.log("inside retrieveEntries");
   let entries = localStorage.getItem("user-entries");
   if (entries) {
     entries = JSON.parse(entries);
@@ -39,7 +38,6 @@ const displayEntries = () => {
 
   let tableContent = document.getElementById("user-entries");
   tableContent.innerHTML = table;
-  console.log(table);
 };
 
 const validateAge = (dob) => {
@@ -51,10 +49,7 @@ const validateAge = (dob) => {
   if (month < 0 || (month === 0 && day < 0)) {
     age--;
   }
-  if (age >= 18 && age <= 55) {
-    return true;
-  }
-  return false;
+  return age < 18 || age > 55;
 };
 
 const saveUserForm = (event) => {
@@ -65,7 +60,7 @@ const saveUserForm = (event) => {
   const dob = document.getElementById("dob").value;
   const acceptTerms = document.getElementById("acceptTerms").checked;
 
-  if (!validateAge(dob)) {
+  if (validateAge(dob)) {
     alert("Age between 18 and 55 only accepted!");
     location.reload();
     return;
